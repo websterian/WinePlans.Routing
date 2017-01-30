@@ -1,0 +1,59 @@
+----item----
+version: 1
+id: {134E1B00-26BA-442A-BEFD-05B3D0209A91}
+database: master
+path: /sitecore/system/Data Exchange/Commerce Tenant/Pipeline Batches
+parent: {976CA12A-A882-49B9-8D81-3E997E9CF2DB}
+name: Pipeline Batches
+master: {0D21226F-7B04-4FF2-9230-B55245CF6FE7}
+template: {CD055ACB-8A99-48E0-9E7D-449405C44D4B}
+templatekey: Pipeline Batch Root
+created: 20161213T204111:636172584719030000
+
+----field----
+field: {F6D8A61C-2F84-4401-BD24-52D2068172BC}
+name: __Originator
+key: __originator
+content-length: 38
+
+{25313451-393C-4F1D-B8A8-FA383CA8AA77}
+----version----
+language: en
+version: 1
+revision: c6094813-4e67-4b19-ad31-8bf1eea91ce0
+
+----field----
+field: {B5E02AD9-D56F-4C41-A065-A133DB87BDEB}
+name: __Display name
+key: __display name
+content-length: 16
+
+Pipeline Batches
+----field----
+field: {25BED78C-4957-4165-998A-CA1B52F67497}
+name: __Created
+key: __created
+content-length: 16
+
+20160519T120813Z
+----field----
+field: {8CDC337E-A112-42FB-BBB4-4143751E123F}
+name: __Revision
+key: __revision
+content-length: 36
+
+c6094813-4e67-4b19-ad31-8bf1eea91ce0
+----field----
+field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
+name: __Updated
+key: __updated
+content-length: 16
+
+20160705T172616Z
+----field----
+field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
+name: __Updated by
+key: __updated by
+content-length: 14
+
+sitecore\admin

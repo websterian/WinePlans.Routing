@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1839D635-BCEA-42B9-BFF3-CD31A27F8E1C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sitecore.Dynamics.WinePlans.Provider</RootNamespace>
+    <AssemblyName>Sitecore.Dynamics.WinePlans.Provider</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <StyleCopOverrideSettingsFile>..\..\Settings.Sitecore.StyleCop</StyleCopOverrideSettingsFile>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <CodeAnalysisRuleSet>..\..\Solution.ruleset</CodeAnalysisRuleSet>
+    <StyleCopTreatErrorsAsWarnings>false</StyleCopTreatErrorsAsWarnings>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE;CODE_ANALYSIS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Sitecore.Dynamics.WinePlans.Provider.xml</DocumentationFile>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <CodeAnalysisRuleSet>..\..\Solution.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <StyleCopTreatErrorsAsWarnings>true</StyleCopTreatErrorsAsWarnings>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory">
+      <HintPath>..\Lib\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.Platform">
+      <HintPath>..\Lib\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.OData.Client, Version=6.14.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.OData.Client.6.14.0\lib\net40\Microsoft.OData.Client.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.OData.Core, Version=6.14.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.OData.Core.6.14.0\lib\portable-net40+sl5+wp8+win8+wpa\Microsoft.OData.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.OData.Edm, Version=6.14.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.OData.Edm.6.14.0\lib\portable-net40+sl5+wp8+win8+wpa\Microsoft.OData.Edm.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Spatial, Version=6.14.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Spatial.6.14.0\lib\portable-net40+sl5+wp8+win8+wpa\Microsoft.Spatial.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Sitecore.DataExchange">
+      <HintPath>..\Lib\Sitecore.DataExchange.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Kernel">
+      <HintPath>..\Lib\Sitecore.Kernel.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Services.Core">
+      <HintPath>..\Lib\Sitecore.Services.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AX7ODataClient.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AX7ODataClient.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Converters\Endpoints\DynamicsWinePlansEndpointConverter.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Managers\ClientConfiguration.cs" />
+    <Compile Include="Managers\OAuthHelper.cs" />
+    <Compile Include="Models\DynamicsEndPoint.cs" />
+    <Compile Include="Models\DynamicsPromotion.cs" />
+    <Compile Include="Models\DynamicsPromotionLine.cs" />
+    <Compile Include="Processors\PipelineSteps\CreateSitecoreWinePlans.cs" />
+    <Compile Include="Processors\Pipelines\DynamicsWinePlansPipelineProcessor.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tracer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="AX7ODataClient.ttinclude" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <CodeAnalysisDictionary Include="..\..\CustomDictionary.xml">
+      <Link>CustomDictionary.xml</Link>
+    </CodeAnalysisDictionary>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Plugins\Endpoints\" />
+    <Folder Include="Plugins\Managers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AX7ODataClient.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AX7ODataClient.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <Import Project="..\..\packages\SitecoreStaticCodeAnalysis.1.0.1\tools\CustomCodeAnalysis.targets" Condition="Exists('..\..\packages\SitecoreStaticCodeAnalysis.1.0.1\tools\CustomCodeAnalysis.targets')" />
+  <Import Project="..\..\packages\SitecoreStyleCop.4.7.41\tools\StyleCop.targets" Condition="Exists('..\..\packages\SitecoreStyleCop.4.7.41\tools\StyleCop.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

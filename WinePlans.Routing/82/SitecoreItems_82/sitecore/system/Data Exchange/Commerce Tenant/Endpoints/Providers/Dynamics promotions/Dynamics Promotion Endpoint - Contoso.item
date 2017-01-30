@@ -1,0 +1,157 @@
+----item----
+version: 1
+id: {C1282B30-E665-44D5-BFEB-9A36CA79C94E}
+database: master
+path: /sitecore/system/Data Exchange/Commerce Tenant/Endpoints/Providers/Dynamics WinePlans/Dynamics winePlan Endpoint - Contoso
+parent: {20D28A9C-0BAE-4DD9-A8B3-E45D74223329}
+name: Dynamics winePlan Endpoint - Contoso
+master: {00000000-0000-0000-0000-000000000000}
+template: {A53A2AD0-EE95-4297-AEB5-ED7AB9237B73}
+templatekey: Dynamics winePlan Endpoint
+created: 20170109T175904:636195815445070000
+
+----field----
+field: {3028EF07-3191-4F55-8E6A-8D82C88A94AA}
+name: WinePlans path
+key: WinePlans path
+content-length: 52
+
+/sitecore/content/Storefront/Home/DynamicsWinePlans
+----field----
+field: {5B94783E-E554-42FF-AC5F-73A58720C163}
+name: winePlan lines path
+key: winePlan lines path
+content-length: 56
+
+/sitecore/content/Storefront/Home/DynamicswinePlanLines
+----field----
+field: {0175C831-D05D-48BB-8C70-9B5A132E5261}
+name: Products path
+key: products path
+content-length: 49
+
+/sitecore/content/Storefront/Home/Product catalog
+----field----
+field: {B73B1759-ACC1-426B-A9CD-1D6FCFC21496}
+name: Campaign path
+key: campaign path
+content-length: 50
+
+/sitecore/system/Marketing Control Panel/Campaigns
+----field----
+field: {A46F1F70-1B7F-4974-9105-9904E23B288B}
+name: Campaign group path
+key: campaign group path
+content-length: 66
+
+/sitecore/system/Marketing Control Panel/Taxonomies/Campaign group
+----field----
+field: {639A3CDE-16EE-424C-9609-0357312880BC}
+name: Marketing facets path
+key: marketing facets path
+content-length: 71
+
+/sitecore/system/Marketing Control Panel/Taxonomies/Dynamics/WinePlans
+----field----
+field: {B01FDF32-8B29-4868-A180-0661345C7478}
+name: Domain
+key: domain
+content-length: 11
+
+contoso.com
+----field----
+field: {349354A9-B616-495B-96B1-2C9D922C5AB5}
+name: Username
+key: username
+content-length: 13
+
+administrator
+----field----
+field: {60B96898-2D34-4277-A58A-165B66A688BA}
+name: Password
+key: password
+content-length: 10
+
+Dyn@m1csAX
+----field----
+field: {8C4F754C-1605-4B1D-86DF-67A08B34DE86}
+name: URL
+key: url
+content-length: 47
+
+net.tcp://cu10:8201/DynamicsAx/Services/SCPromo
+----field----
+field: {D8EC842C-E3C9-46A2-BAFD-FC4A5E3858A8}
+name: Company id
+key: company id
+content-length: 4
+
+USRT
+----field----
+field: {00931D03-9F63-45D7-A404-8C2A9CCEDCA7}
+name: Partition
+key: partition
+content-length: 7
+
+Initial
+----field----
+field: {2A1864F3-EFE6-4383-AE4E-0432820D3632}
+name: Channel id
+key: channel id
+content-length: 10
+
+5637144608
+----field----
+field: {E7E32A00-3B40-483C-B457-924FA6CD235A}
+name: Currency
+key: currency
+content-length: 3
+
+USD
+----field----
+field: {3C7F78CC-0C5C-4076-80EF-9A49FDA5FF96}
+name: ConverterType
+key: convertertype
+content-length: 132
+
+Sitecore.Dynamics.WinePlans.Provider.Converters.Endpoints.DynamicswinePlanEndpointConverter, Sitecore.Dynamics.WinePlans.Provider
+----field----
+field: {BA3F86A2-4A1C-4D78-B63D-91C2779C1B5E}
+name: __Sortorder
+key: __sortorder
+content-length: 3
+
+200
+----version----
+language: en
+version: 1
+revision: 81a3b1a0-3b89-4d0c-8306-57e5e95e5a42
+
+----field----
+field: {25BED78C-4957-4165-998A-CA1B52F67497}
+name: __Created
+key: __created
+content-length: 16
+
+20170109T175904Z
+----field----
+field: {8CDC337E-A112-42FB-BBB4-4143751E123F}
+name: __Revision
+key: __revision
+content-length: 36
+
+81a3b1a0-3b89-4d0c-8306-57e5e95e5a42
+----field----
+field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
+name: __Updated
+key: __updated
+content-length: 16
+
+20170110T210111Z
+----field----
+field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
+name: __Updated by
+key: __updated by
+content-length: 14
+
+sitecore\admin
