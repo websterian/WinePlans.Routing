@@ -12,13 +12,16 @@ namespace Sitecore.Dynamics.WinePlans.Provider.Processors.PipelineSteps
     using System.Diagnostics;
     using System.Globalization;
     using System.Linq;
+
+    using global::Microsoft.OData.Client;
+
     using Sitecore.DataExchange;
     using Sitecore.DataExchange.Contexts;
     using Sitecore.DataExchange.Models;
     using Sitecore.DataExchange.Processors.PipelineSteps;
-    using Sitecore.Dynamics.WinePlans.Provider.Models;
     using Sitecore.Dynamics.WinePlans.Provider.Managers;
     using Sitecore.Dynamics.WinePlans.Provider.Microsoft.Dynamics.DataEntities;
+    using Sitecore.Dynamics.WinePlans.Provider.Models;
     using Sitecore.Services.Core.Model;
 
     /// <summary>
@@ -42,6 +45,7 @@ namespace Sitecore.Dynamics.WinePlans.Provider.Processors.PipelineSteps
         private const string StartDate = "Start date";
         private const string TemplateId = "TemplateID";
         private const string TemplateName = "TemplateName";
+
         /// <summary>
         /// Processes the specified route context.
         /// </summary>
@@ -90,11 +94,11 @@ namespace Sitecore.Dynamics.WinePlans.Provider.Processors.PipelineSteps
 
                 winePlan = new ItemModel
                 {
-                    [TemplateId] = WinePlanTemplateId,
-                    [ItemName] = dynamicswinePlan.Name,
-                    [Name] = dynamicswinePlan.Name,
-                    [Description] = dynamicswinePlan.Description,
-                    [StartDate] = MapToSitecoreDate(dynamicswinePlan.StartDate),
+                    [TemplateId] = WinePlanTemplateId, 
+                    [ItemName] = dynamicswinePlan.Name, 
+                    [Name] = dynamicswinePlan.Name, 
+                    [Description] = dynamicswinePlan.Description, 
+                    [StartDate] = MapToSitecoreDate(dynamicswinePlan.StartDate), 
                     [EndDate] = MapToSitecoreDate(dynamicswinePlan.EndDate)
                 };
 
@@ -112,6 +116,7 @@ namespace Sitecore.Dynamics.WinePlans.Provider.Processors.PipelineSteps
 
                 this._createdWinePlans.Add(winePlan);
             }
+
             Log($"Processing Dynamics Wine Plans completed in {GetElapsedTimeAsString(this._stopwatch)}", ConsoleColor.Yellow);
         }
 
@@ -137,7 +142,7 @@ namespace Sitecore.Dynamics.WinePlans.Provider.Processors.PipelineSteps
                 return;
             }
 
-            var id = Context.ItemModelRepository.Create(item[ItemName].ToString(),Guid.Parse(item[TemplateId].ToString()),parentId);
+            var id = Context.ItemModelRepository.Create(item[ItemName].ToString(), Guid.Parse(item[TemplateId].ToString()), parentId);
             item[ItemId] = id;
             UpdateItemModel(item);
         }
@@ -175,28 +180,29 @@ namespace Sitecore.Dynamics.WinePlans.Provider.Processors.PipelineSteps
         private static IEnumerable<DynamicsWinePlan> GetWinePlans()
         {
             var winePlans = new List<DynamicsWinePlan>();
-            string ODataEntityPath = Managers.ClientConfiguration.Default.UriString + "data";
-            Uri oDataUri = new Uri(ODataEntityPath, UriKind.Absolute);
+            var ODataEntityPath = Managers.ClientConfiguration.Default.UriString + "data";
+            var oDataUri = new Uri(ODataEntityPath, UriKind.Absolute);
             var resources = new Resources(oDataUri);
             resources.SendingRequest2 += 
-                new EventHandler<global::Microsoft.OData.Client.SendingRequest2EventArgs>(delegate (object sender, global::Microsoft.OData.Client.SendingRequest2EventArgs e)
-            {
-                var authenticationHeader = OAuthHelper.GetAuthenticationHeader();
-                e.RequestMessage.SetHeader(OAuthHelper.OAuthHeader, authenticationHeader);
-            });
+                delegate (object sender, SendingRequest2EventArgs e)
+                    {
+                        var authenticationHeader = OAuthHelper.GetAuthenticationHeader();
+                        e.RequestMessage.SetHeader(OAuthHelper.OAuthHeader, authenticationHeader);
+                    };
 
             var axWinePlans = 
-                //resources.WinePlans.Where(x => x.DataAreaId == "USRT");
-            resources.CreateQuery<WinePlan>("WinePlans").AddQueryOption("filter","DataAreaId eq 'usrt'").AddQueryOption("cross-company",true);
+                // resources.WinePlans.Where(x => x.DataAreaId == "USRT");
+            resources.CreateQuery<WinePlan>("WinePlans").AddQueryOption("filter", "DataAreaId eq 'usrt'").AddQueryOption("cross-company", true);
 
             foreach (var axwinePlan in axWinePlans)
             {
-                var winePlan = new DynamicsWinePlan();
-
-                winePlan.Description = axwinePlan.WinePlanDescription;
-                winePlan.StartDate = axwinePlan.StartDateTime.Date;
-                winePlan.EndDate = axwinePlan.EndDateTime.Date;
-                winePlan.Name = axwinePlan.WinePlanName;
+                var winePlan = new DynamicsWinePlan
+                                   {
+                                       Description = axwinePlan.WinePlanDescription, 
+                                       StartDate = axwinePlan.StartDateTime.Date, 
+                                       EndDate = axwinePlan.EndDateTime.Date, 
+                                       Name = axwinePlan.WinePlanName
+                                   };
 
                 winePlans.Add(winePlan);
             }

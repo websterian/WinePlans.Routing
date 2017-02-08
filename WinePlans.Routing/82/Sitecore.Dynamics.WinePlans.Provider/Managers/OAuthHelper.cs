@@ -21,20 +21,14 @@ namespace Sitecore.Dynamics.WinePlans.Provider.Managers
         /// <returns>The authentication header for the Web API call.</returns>
         public static string GetAuthenticationHeader()
         {
-            var aadTenant = ClientConfiguration.Default.ActiveDirectoryTenant;
-            var clientAppId = ClientConfiguration.Default.ActiveDirectoryClientAppId;
-            var clientKey = ClientConfiguration.Default.ActiveDirectoryClientAppId;
-            var aadResource = ClientConfiguration.Default.ActiveDirectoryResource;
+            var authenticationContext = new AuthenticationContext(ClientConfiguration.Default.ActiveDirectoryTenant);
+            var passwordCred = new UserPasswordCredential(ClientConfiguration.Default.UserName, ClientConfiguration.Default.Password);
 
-            var authenticationContext = new AuthenticationContext(aadTenant);
-            var clientCredential = new ClientCredential(clientAppId, clientKey);
-            var upc = new UserPasswordCredential(ClientConfiguration.Default.UserName, ClientConfiguration.Default.Password);
-
-            var authenticationResult = authenticationContext.AcquireTokenAsync(
-                aadResource,
-                clientAppId,
-                new Uri("http://odata"),
-                new PlatformParameters(PromptBehavior.Always)).Result;
+            var authenticationResult =
+                authenticationContext.AcquireTokenAsync(
+                    ClientConfiguration.Default.ActiveDirectoryResource,
+                    ClientConfiguration.Default.ActiveDirectoryClientAppId,
+                    passwordCred).Result;
 
             return authenticationResult.CreateAuthorizationHeader();
         }

@@ -12,12 +12,12 @@ namespace Sitecore.Dynamics.WinePlans.Provider.Managers
 
         public static ClientConfiguration OneBox = new ClientConfiguration()
         {
-            UriString = "https://sitecoreserviceax7119b364e2504b8542aos.cloudax.dynamics.com/",
-            UserName = "Kerry@sitecoreax7c.onmicrosoft.com",
-            Password = "Sitec0re3",
-            ActiveDirectoryResource = "https://sitecoreserviceax7119b364e2504b8542aos.cloudax.dynamics.com",
-            ActiveDirectoryTenant = "https://login.windows.net/69dc6202-31d8-4d1f-a848-85c7118c335e",
-            ActiveDirectoryClientAppId = "9f01cd56-76fe-4b6f-bb2c-feb78012f960",
+            UriString = "",
+            UserName = "",
+            Password = "",
+            ActiveDirectoryResource = "",
+            ActiveDirectoryTenant = "",
+            ActiveDirectoryClientAppId = "",
         };
 
         public string UriString { get; set; }
